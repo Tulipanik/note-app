@@ -27,10 +27,10 @@ export function Title() {
     setGroups(["a", "b", "c"]);
     //TODO
     //Połączenie do API (po CORS)
-    axios.get("http://localhost:8080/notes").then((res) => {
-      console.log(res);
-      setGroups(res.data);
-    });
+    // axios.get("http://localhost:8080/notes").then((res) => {
+    //   console.log(res);
+    //   setGroups(res.data);
+    // });
   };
 
   React.useEffect(() => {
@@ -69,7 +69,7 @@ export function Title() {
         <Divider />
         <List>
           <ListItem key={1} disablePadding>
-            <ListItemButton onClick={showAll}>
+            <ListItemButton onClick={getNotes}>
               <ListItemText primary={"Wyświetl wszystkie"} />
             </ListItemButton>
           </ListItem>
