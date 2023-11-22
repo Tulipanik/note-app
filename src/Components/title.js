@@ -24,14 +24,18 @@ export function Title() {
   const changeGroup = () => {};
 
   const getNotes = () => {
-    console.log("Siema");
-    // axios.get("http://localhost:8080/notes").then((res) => {
-    //   console.log(res);
-    //   setGroups(res.data);
-    // });
+    setGroups(["a", "b", "c"]);
+    //TODO
+    //Połączenie do API (po CORS)
+    axios.get("http://localhost:8080/notes").then((res) => {
+      console.log(res);
+      setGroups(res.data);
+    });
   };
 
-  getNotes();
+  React.useEffect(() => {
+    getNotes();
+  }, []);
 
   const showAll = () => {};
   return (
@@ -78,7 +82,9 @@ export function Title() {
           {[...groups].map((text, index) => {
             return (
               <ListItem key={index} disablePadding>
-                <ListItemButton onClick={() => changeGroup(text)}>
+                <ListItemButton
+                  onClick={() => router.push(`/notes?group=${text}`)}
+                >
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
