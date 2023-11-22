@@ -1,27 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+form > input {
+  display: block;
+  margin-left: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.typography {
+  background-color: grey;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.noteContainer {
+  display: flex-box;
+  width: 100vw;
+  margin-right: 0;
+}
+
+.note {
+  width: 28%;
+  margin: 10px;
+  background-color: yellow;
 }
