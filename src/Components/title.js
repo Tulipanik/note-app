@@ -14,14 +14,13 @@ import { ListItemButton } from "@mui/material";
 import { ListItemText } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const drawerWidth = 240;
 
 export function Title() {
-  const [groups, setGroups] = React.useState([]);
+  const [groups, setGroups] = useState([]);
   const router = useRouter();
-
-  const changeGroup = () => {};
 
   const getNotes = () => {
     setGroups(["a", "b", "c"]);
@@ -71,11 +70,6 @@ export function Title() {
           <ListItem key={1} disablePadding>
             <ListItemButton onClick={getNotes}>
               <ListItemText primary={"Wyświetl wszystkie"} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={() => router.push("/add")}>
-              <ListItemText primary={"Dodaj notatkę"} />
             </ListItemButton>
           </ListItem>
           <Divider />
