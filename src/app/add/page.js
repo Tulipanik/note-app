@@ -3,6 +3,13 @@ import { FormLabel, Input, FormGroup, Box } from "@mui/material";
 const drawerWidth = 240;
 
 export default function AddForm() {
+  const add = () => {
+    //TODO
+    //Tutaj dodanie notatki
+    //jeżeli brak grupy w url (jeśli jest bierz z url)
+    //nie ma możliwości dodawania bez wyboru grupy
+    //usunę przycisk dodawania z wyświetl wszystkie po dodaniu api
+  };
   return (
     <Box
       sx={{
@@ -11,7 +18,7 @@ export default function AddForm() {
         ml: `${drawerWidth + 10}px`,
       }}
     >
-      <FormGroup>
+      <FormGroup onSubmit={add}>
         <FormLabel>Title</FormLabel>
         <Input
           sx={{ marginBottom: "20px" }}

@@ -14,7 +14,13 @@ export default function Note(params) {
 
   return (
     <>
-      {zoom && <ZoomedNote title={params.title} content={params.content} />}
+      {zoom && (
+        <ZoomedNote
+          title={params.title}
+          content={params.content}
+          setZoom={setZoom}
+        />
+      )}
       <Box
         onClick={zoomSetter}
         sx={{

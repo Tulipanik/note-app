@@ -1,9 +1,20 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
+import axios from "axios";
 
 const drawerWidth = 240;
 
 export default function ZoomedNote(params) {
-  console.log("Siema");
+  const updateNote = () => {
+    //TODO
+    //Musisz wziąć dane z formularza i wysłać je do update'u
+    //grupę bierzesz z url, jak z wyświetl wszystkie to będzie dodana grupa na notatce (na razie brak)
+  };
+
+  const deleteNote = () => {
+    //TODO
+    //Musisz napisać usuwanie notatki w bazie, i jak sukces ustawienie zmiennej zoom na false
+  };
+
   return (
     <Box
       sx={{
@@ -16,7 +27,7 @@ export default function ZoomedNote(params) {
         display: "flex",
         flexDirection: "column",
         zIndex: 3,
-        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        backgroundColor: "rgba(0, 0, 0, 0.85)",
         justifyContent: "center",
         alignItems: "center",
       }}
@@ -26,14 +37,14 @@ export default function ZoomedNote(params) {
           position: "absolute",
           top: 60,
           right: 10,
-          width: "10px",
           cursor: "pointer",
           zIndex: 4,
           color: "white",
           fontSize: "2rem",
         }}
+        onClick={() => params.setZoom(false)}
       >
-        <img src="/x-mark.png" />
+        <img src="/x-mark.png" style={{ width: "20px" }} />
       </Box>
       <Box
         sx={{
@@ -41,16 +52,36 @@ export default function ZoomedNote(params) {
           height: "40vh",
           width: "40vw",
           textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          padding: "20px",
         }}
       >
-        <h3>{params.title}</h3>
-        <p>{params.content}</p>
+        <TextField
+          label="Title"
+          variant="standard"
+          defaultValue={params.title}
+          InputProps={{ style: { fontWeight: "bold" } }}
+          sx={{ marginTop: "10px" }}
+        />
+        <TextField
+          multiline
+          rows={12}
+          label="Content"
+          variant="standard"
+          defaultValue={params.content}
+          sx={{ marginTop: "20px" }}
+        />
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
-        <Button sx={{ margin: "20px" }} variant="contained">
+        <Button
+          onClick={updateNote}
+          sx={{ margin: "20px" }}
+          variant="contained"
+        >
           Update note
         </Button>
-        <Button sx={{ margin: "20px" }} variant="outlined">
+        <Button onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined">
           Delete note
         </Button>
       </Box>
