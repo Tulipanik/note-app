@@ -4,13 +4,31 @@ import axios from "axios";
 const drawerWidth = 240;
 
 export default function ZoomedNote(params) {
-  const updateNote = () => {
+  const updateNote = async () => {
+    try {
+      const updatedNote = {
+        title: document.getElementById("title").value,
+        content: document.getElementById("content").value,
+      };
+
+      await axios.put(`http://localhost:8080/notes/${params.id}`, updatedNote);
+
+      params.setZoom(false);
+    } catch (error) {
+      console.error("Error updating note:", error);
+    }
     //TODO
     //Musisz wziąć dane z formularza i wysłać je do update'u
     //grupę bierzesz z url, jak z wyświetl wszystkie to będzie dodana grupa na notatce (na razie brak)
   };
 
-  const deleteNote = () => {
+  const deleteNote = async () => {
+    try {
+      await axios.delete(`http://localhost:8080/notes/${params.id}`);
+      params.setZoom(false);
+    } catch (error) {
+      console.error("Error deleting note:", error);
+    }
     //TODO
     //Musisz napisać usuwanie notatki w bazie, i jak sukces ustawienie zmiennej zoom na false
   };

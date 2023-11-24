@@ -35,8 +35,19 @@ export function Title() {
     //   console.log(res);
     //   setGroups(res.data);
     // });
-    setNotes([{ title: "Siema", content: "elo" }]);
-    setGroups(["a", "b", "c"]);
+    try {
+      axios.get("http://localhost:8080/notes").then((res) => {
+      console.log(res);
+      setGroups(res.data.groups);
+      setNotes(res.data.notes);
+    });
+    } catch (error) {
+      console.log("error.status:", error);
+    }
+    
+
+    //setNotes([{ title: "Siema", content: "elo" }]);
+    //setGroups(["a", "b", "c"]);
   };
 
   React.useEffect(() => {

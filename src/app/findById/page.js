@@ -9,10 +9,24 @@ const drawerWidth = 240;
 export default function FindByID() {
   const [found, setFound] = useState(false);
   const [note, setNote] = useState({});
-  const findNote = () => {
+  const findNote = async () => {
     //TODO
     //trzeba pobrać notatkę o zadanym id, jak nie znajdzie ustawić found na false, innaczej na true
     //trzeba też ustawić notatkę na znalezioną jeśli jest
+
+    try {
+      const response = await axios.get(`http://localhost:8080/notes/${noteId}`);
+      const foundNote = response.data;
+
+      if (foundNote) {
+        setNote(foundNote);
+        setFound(true);
+      } else {
+        setFound(false);
+      }
+    } catch (error) {
+      console.error("Error finding note:", error);
+    }
   };
   return (
     <Box
