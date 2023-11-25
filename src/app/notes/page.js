@@ -10,26 +10,21 @@ import axios from "axios";
 const drawerWidth = 240;
 
 export default function ViewGroupNotes() {
-
-  const notes = useContext(notesContext);
   const [notesLocal, setNotes] = useState([]);
   const router = useRouter();
-  const userId = router.query?.group || '';
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const group = urlParams.get("group") || undefined;
 
   useEffect(() => {
-    //TODO
-    //Tutaj musisz zmapować (funkcja map) wszystkie
-    // notatki na te zgodne z grupą, musisz też sprawdzić,
-    // czy grupa istnieje, jeśli nie to wyświetlasz wszystkie
-    // jeśli nie ma grupy w url to bierz z notatki (pokazywanie id jeszcze dorobię po api)
-    //setNotes([{ title: "Siema", content: "elo" }]);
-
     const fetchNotes = async () => {
       try {
         let response;
 
-        if (userId) {
-          response = await axios.get(`http://localhost:8080/user/${userId}`);
+        if (group != undefined) {
+          response = await axios.get(
+            `http://localhost:8080/notes/user/${group}`
+          );
         } else {
           response = await axios.get("http://localhost:8080/notes");
         }
@@ -41,7 +36,7 @@ export default function ViewGroupNotes() {
     };
 
     fetchNotes();
-  }, [userId]);
+  }, [group]);
 
   return (
     <Box
@@ -53,14 +48,20 @@ export default function ViewGroupNotes() {
       }}
     >
       <Button
+        sx={{ display: group == undefined ? "none" : "block" }}
         variant="contained"
-        onClick={() => router.push(`/add?group=${userId}`)}
+        onClick={() => router.push(`/add?group=${group}`)}
       >
         Dodaj notatkę +
       </Button>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {notesLocal.map((note, key) => (
-          <Note key={key} title={note.title} content={note.content} />
+          <Note
+            key={key}
+            title={note.title}
+            content={note.content}
+            id={note.id}
+          />
         ))}
       </Box>
     </Box>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FormLabel, Input, FormGroup, Box } from "@mui/material";
 import { useState } from "react";
@@ -10,27 +10,27 @@ const drawerWidth = 240;
 export default function AddForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [group, setGroup] = useState("");
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const group = urlParams.get("group") || "";
   const router = useRouter();
 
-  const add = async () => {
-    //TODO
-    //Tutaj dodanie notatki
-    //jeżeli brak grupy w url (jeśli jest bierz z url)
-    //nie ma możliwości dodawania bez wyboru grupy
-    //usunę przycisk dodawania z wyświetl wszystkie po dodaniu api
+  const add = async (e) => {
+    e.preventDefault();
 
     try {
-      if (title.trim() === "" || group.trim() === "") {
+      if (title === "" || group === "") {
         console.error("Title and group are required.");
         return;
       }
 
-      await axios.post("http://localhost:8080/notes", {
+      const addedObject = {
         title: title,
         content: content,
-        group: group,
-      });
+        userId: group,
+      };
+
+      await axios.post("http://localhost:8080/notes", addedObject);
 
       router.push(group ? `/notes?group=${group}` : "/notes");
     } catch (error) {
@@ -46,11 +46,12 @@ export default function AddForm() {
         ml: `${drawerWidth + 10}px`,
       }}
     >
-      <FormGroup onSubmit={add}>
+      <form onSubmit={add} sx={{ display: "flex", flexDirection: "rows" }}>
         <FormLabel>Title</FormLabel>
         <Input
           sx={{ marginBottom: "20px" }}
           placeholder="Write here the note title"
+          onChange={(e) => setTitle(e.target.value)}
         />
         <FormLabel>Note</FormLabel>
         <Input
@@ -58,6 +59,7 @@ export default function AddForm() {
           rows={4}
           sx={{ marginTop: "20px", width: "100", height: "50px" }}
           placeholder="Write here your note"
+          onChange={(e) => setContent(e.target.value)}
         />
         <div>
           <Input
@@ -65,7 +67,7 @@ export default function AddForm() {
             sx={{ textAlign: "center", alignItems: "center" }}
           />
         </div>
-      </FormGroup>
+      </form>
     </Box>
   );
 }

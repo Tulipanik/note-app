@@ -18,6 +18,7 @@ export default function Note(params) {
         <ZoomedNote
           title={params.title}
           content={params.content}
+          id={params.id}
           setZoom={setZoom}
         />
       )}

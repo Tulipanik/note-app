@@ -7,22 +7,23 @@ import { useState } from "react";
 const drawerWidth = 240;
 
 export default function FindByID() {
-  const [found, setFound] = useState(false);
+  const [found, setFound] = useState(true);
   const [note, setNote] = useState({});
+  const [noteId, setNoteId] = useState("");
+
   const findNote = async () => {
-    //TODO
-    //trzeba pobrać notatkę o zadanym id, jak nie znajdzie ustawić found na false, innaczej na true
-    //trzeba też ustawić notatkę na znalezioną jeśli jest
-
     try {
+      console.log("siema");
       const response = await axios.get(`http://localhost:8080/notes/${noteId}`);
+      console.log(response);
       const foundNote = response.data;
+      console.log(response);
 
-      if (foundNote) {
+      if (foundNote.length != 0) {
         setNote(foundNote);
-        setFound(true);
+        // setFound(true);
       } else {
-        setFound(false);
+        // setFound(false);
       }
     } catch (error) {
       console.error("Error finding note:", error);
@@ -36,7 +37,7 @@ export default function FindByID() {
         ml: `${drawerWidth + 10}px`,
       }}
     >
-      <FormGroup onSubmit={findNote}>
+      <form onSubmit={findNote}>
         <FormLabel>Title</FormLabel>
         <Input
           sx={{ marginBottom: "20px" }}
@@ -45,8 +46,9 @@ export default function FindByID() {
         <Input
           type="Submit"
           sx={{ textAlign: "center", alignItems: "center", width: "100px" }}
+          onChange={(e) => setNoteId(e.target.value)}
         />
-      </FormGroup>
+      </form>
       {found ? (
         <Note title={note.title} content={note.content} />
       ) : (

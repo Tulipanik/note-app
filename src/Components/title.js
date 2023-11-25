@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Drawer } from "@mui/material";
+import { Drawer, FormGroup, Input } from "@mui/material";
 import { Divider } from "@mui/material";
 import { List } from "@mui/material";
 import { ListItem } from "@mui/material";
@@ -23,31 +23,23 @@ export function Title() {
   const [groups, setGroups] = useState([]);
   const [notes, setNotes] = useState([]);
   const router = useRouter();
+  let [newGroup, setNewGroup] = useState("");
 
   const getNotes = () => {
-    //TODO
-    // Tutaj musisz pobrać wszystkie notatki z bazy oraz
-    // wydobyć z tego grupy i ustawić je funkcją setGroups
-    //Ustaw jeszcze notatki funckją set Notes
-
-    //Połączenie do API (po CORS)
-    // axios.get("http://localhost:8080/notes").then((res) => {
-    //   console.log(res);
-    //   setGroups(res.data);
-    // });
     try {
       axios.get("http://localhost:8080/notes").then((res) => {
-      console.log(res);
-      setGroups(res.data.groups);
-      setNotes(res.data.notes);
-    });
+        if (res.data.length == 0) {
+          setGroups([]);
+        } else {
+          let beginning = res.data;
+          let userIds = beginning.map((group) => group.userId);
+          setGroups([...new Set(userIds)]);
+        }
+        setNotes(res.data);
+      });
     } catch (error) {
       console.log("error.status:", error);
     }
-    
-
-    //setNotes([{ title: "Siema", content: "elo" }]);
-    //setGroups(["a", "b", "c"]);
   };
 
   React.useEffect(() => {
@@ -98,7 +90,7 @@ export function Title() {
             <Divider />
             {[...groups].map((text, index) => {
               return (
-                <ListItem key={index} disablePadding>
+                <ListItem key={index + 3} disablePadding>
                   <ListItemButton
                     onClick={() => router.push(`/notes?group=${text}`)}
                   >
@@ -107,6 +99,21 @@ export function Title() {
                 </ListItem>
               );
             })}
+            <ListItem key={groups.length + 3} disablePadding>
+              <form
+                onSubmit={() => {
+                  setGroups([...groups, newGroup]);
+                }}
+              >
+                <Input
+                  onChange={(value) => {
+                    setNewGroup(value.target.value);
+                  }}
+                  placeholder="Add group"
+                />
+                <Input sx={{ display: "none" }} type="submit" />
+              </form>
+            </ListItem>
           </List>
         </Drawer>
       </Box>

@@ -1,36 +1,43 @@
 import { Box, Button, TextField } from "@mui/material";
+import { useState } from "react";
 import axios from "axios";
 
 const drawerWidth = 240;
 
 export default function ZoomedNote(params) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const group = urlParams.get("group") || "";
+  const [newTitle, setNewTitle] = useState(params.title);
+  const [newContent, setNewContent] = useState(params.content);
+
   const updateNote = async () => {
     try {
+      console.log(newContent);
       const updatedNote = {
-        title: document.getElementById("title").value,
-        content: document.getElementById("content").value,
+        id: params.id,
+        title: newTitle,
+        content: newContent,
+        userId: group,
       };
 
       await axios.put(`http://localhost:8080/notes/${params.id}`, updatedNote);
 
       params.setZoom(false);
+      window.location.reload();
     } catch (error) {
       console.error("Error updating note:", error);
     }
-    //TODO
-    //Musisz wziąć dane z formularza i wysłać je do update'u
-    //grupę bierzesz z url, jak z wyświetl wszystkie to będzie dodana grupa na notatce (na razie brak)
   };
 
   const deleteNote = async () => {
     try {
       await axios.delete(`http://localhost:8080/notes/${params.id}`);
       params.setZoom(false);
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting note:", error);
     }
-    //TODO
-    //Musisz napisać usuwanie notatki w bazie, i jak sukces ustawienie zmiennej zoom na false
   };
 
   return (
@@ -67,7 +74,6 @@ export default function ZoomedNote(params) {
       <Box
         sx={{
           backgroundColor: "yellow",
-          height: "40vh",
           width: "40vw",
           textAlign: "center",
           display: "flex",
@@ -81,15 +87,18 @@ export default function ZoomedNote(params) {
           defaultValue={params.title}
           InputProps={{ style: { fontWeight: "bold" } }}
           sx={{ marginTop: "10px" }}
+          onChange={(e) => setNewTitle(e.target.value)}
         />
         <TextField
           multiline
-          rows={12}
+          rows={10}
           label="Content"
           variant="standard"
           defaultValue={params.content}
           sx={{ marginTop: "20px" }}
+          onChange={(e) => setNewContent(e.target.value)}
         />
+        <Box>id: {params.id}</Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Button
