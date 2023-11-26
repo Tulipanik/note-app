@@ -15,6 +15,7 @@ export default function ViewGroupNotes() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const group = urlParams.get("group") || undefined;
+  console.log(group);
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -48,7 +49,7 @@ export default function ViewGroupNotes() {
       }}
     >
       <Button
-        sx={{ display: group == undefined ? "none" : "block" }}
+        sx={{ display: group === undefined ? "none" : "block" }}
         variant="contained"
         onClick={() => router.push(`/add?group=${group}`)}
       >

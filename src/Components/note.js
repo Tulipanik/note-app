@@ -4,9 +4,6 @@ import ZoomedNote from "@/Components/zoomedNote.js";
 
 export default function Note(params) {
   const [zoom, setZoom] = useState(false);
-  useEffect(() => {
-    console.log(zoom);
-  });
 
   const zoomSetter = () => {
     setZoom((zoom) => !zoom);
