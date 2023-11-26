@@ -2,29 +2,28 @@
 
 import { Box, Button } from "@mui/material";
 import Note from "@/Components/note";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { notesContext } from "@/Components/title";
 import axios from "axios";
 
 const drawerWidth = 240;
 
-export default function ViewGroupNotes() {
+export default function ViewGroupsNotes() {
   const [notesLocal, setNotes] = useState([]);
   const router = useRouter();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const group = urlParams.get("group") || undefined;
-  console.log(group);
+  const groups = urlParams.get("group") || undefined;
 
   useEffect(() => {
+    console.log(groups);
     const fetchNotes = async () => {
       try {
         let response;
 
-        if (group != undefined) {
+        if (groups != undefined) {
           response = await axios.get(
-            `http://localhost:8080/notes/user/${group}`
+            `http://localhost:8080/notes/user/${groups}`
           );
         } else {
           response = await axios.get("http://localhost:8080/notes");
@@ -37,7 +36,7 @@ export default function ViewGroupNotes() {
     };
 
     fetchNotes();
-  }, [group]);
+  }, [groups]);
 
   return (
     <Box
@@ -49,9 +48,9 @@ export default function ViewGroupNotes() {
       }}
     >
       <Button
-        sx={{ display: group === undefined ? "none" : "block" }}
+        sx={{ display: groups === undefined ? "none" : "block" }}
         variant="contained"
-        onClick={() => router.push(`/add?group=${group}`)}
+        onClick={() => router.push(`/add?group=${groups}`)}
       >
         Dodaj notatkę +
       </Button>

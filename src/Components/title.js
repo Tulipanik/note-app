@@ -92,7 +92,9 @@ export function Title() {
               return (
                 <ListItem key={index + 3} disablePadding>
                   <ListItemButton
-                    onClick={() => router.push(`/notes?group=${text}`)}
+                    onClick={() => {
+                      router.push(`/notes?group=${text}`);
+                    }}
                   >
                     <ListItemText primary={text} />
                   </ListItemButton>

@@ -39,7 +39,7 @@ export default function FindByID() {
       <form onSubmit={findNote} sx={{ display: "flex", flexDirection: "row" }}>
         <FormLabel>Title</FormLabel>
         <Input
-          sx={{ marginBottom: "20px" }}
+          sx={{ marginBottom: "20px", width: "100%" }}
           placeholder="Write here the note title"
           onChange={(e) => setNoteId(e.target.value)}
         />

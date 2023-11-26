@@ -46,10 +46,10 @@ export default function AddForm() {
         ml: `${drawerWidth + 10}px`,
       }}
     >
-      <form onSubmit={add} sx={{ display: "flex", flexDirection: "rows" }}>
+      <form onSubmit={add} sx={{ display: "flex", flexDirection: "column" }}>
         <FormLabel>Title</FormLabel>
         <Input
-          sx={{ marginBottom: "20px" }}
+          sx={{ marginBottom: "20px", width: "100%" }}
           placeholder="Write here the note title"
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -57,7 +57,7 @@ export default function AddForm() {
         <Input
           multiline
           rows={4}
-          sx={{ marginTop: "20px", width: "100", height: "50px" }}
+          sx={{ marginTop: "20px", width: "100%", height: "50px" }}
           placeholder="Write here your note"
           onChange={(e) => setContent(e.target.value)}
         />
