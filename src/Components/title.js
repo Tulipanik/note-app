@@ -95,6 +95,7 @@ export function Title() {
                     onClick={() => {
                       router.push(`/notes?group=${text}`);
                     }}
+                    className="t3sel-main-page-set-group-button"
                   >
                     <ListItemText primary={text} />
                   </ListItemButton>
@@ -105,6 +106,7 @@ export function Title() {
               <form
                 onSubmit={() => {
                   setGroups([...groups, newGroup]);
+                  router.push(`/notes?group=${newGroup}`)
                 }}
               >
                 <Input
@@ -112,6 +114,7 @@ export function Title() {
                     setNewGroup(value.target.value);
                   }}
                   placeholder="Add group"
+                  className="t3sel-main-page-add-group-button"
                 />
                 <Input sx={{ display: "none" }} type="submit" />
               </form>

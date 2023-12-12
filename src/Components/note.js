@@ -29,8 +29,8 @@ export default function Note(params) {
           textAlign: "center",
         }}
       >
-        <h3 sx={{ display: "block" }}>{params.title}</h3>
-        <p sx={{ display: "block" }}>{params.content}</p>
+        <h3 sx={{ display: "block" }} className={"t3sel-note-title"}>{params.title}</h3>
+        <p sx={{ display: "block" }} className={"t3sel-note-content"}>{params.content}</p>
       </Box>
     </>
   );

@@ -88,6 +88,7 @@ export default function ZoomedNote(params) {
           InputProps={{ style: { fontWeight: "bold" } }}
           sx={{ marginTop: "10px" }}
           onChange={(e) => setNewTitle(e.target.value)}
+          className={"t3sel-zoomed-note-title-input"}
         />
         <TextField
           multiline
@@ -97,6 +98,7 @@ export default function ZoomedNote(params) {
           defaultValue={params.content}
           sx={{ marginTop: "20px" }}
           onChange={(e) => setNewContent(e.target.value)}
+          className={"t3sel-zoomed-note-content-input"}
         />
         <Box>id: {params.id}</Box>
       </Box>
@@ -105,6 +107,7 @@ export default function ZoomedNote(params) {
           onClick={updateNote}
           sx={{ margin: "20px" }}
           variant="contained"
+          className={'t3sel-modify-note-submit'}
         >
           Update note
         </Button>
