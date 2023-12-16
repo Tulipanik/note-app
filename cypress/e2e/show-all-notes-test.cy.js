@@ -49,7 +49,7 @@ describe('search note tests', () => {
       cy.get(NOTE_CONTENT_SELECTOR).should('be.visible').should('have.length', notes1.length + notes2.length)
   })
 
-    it('[scenario 2] show all notes when there is nothing in db', () => {
+    it('[scenario 3] show all notes when there is nothing in db', () => {
         axios.delete(BASE_API_URL + '/notes')
         cy.wait(100)
         cy.visit(BASE_URL + '/notes')
