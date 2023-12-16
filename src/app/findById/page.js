@@ -42,10 +42,12 @@ export default function FindByID() {
           sx={{ marginBottom: "20px", width: "100%" }}
           placeholder="Write here the note title"
           onChange={(e) => setNoteId(e.target.value)}
+          className={'t3sel-search-note-id-input'}
         />
         <Input
           type="Submit"
           sx={{ textAlign: "center", alignItems: "center", width: "100px" }}
+          className={'t3sel-search-note-find-button'}
         />
       </form>
       <Box>

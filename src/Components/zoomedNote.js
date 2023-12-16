@@ -68,6 +68,7 @@ export default function ZoomedNote(params) {
           fontSize: "2rem",
         }}
         onClick={() => params.setZoom(false)}
+        className={"t3sel-zoomed-note-exit-button"}
       >
         <img src="/x-mark.png" style={{ width: "20px" }} />
       </Box>
@@ -100,7 +101,7 @@ export default function ZoomedNote(params) {
           onChange={(e) => setNewContent(e.target.value)}
           className={"t3sel-zoomed-note-content-input"}
         />
-        <Box>id: {params.id}</Box>
+        <Box className={"t3sel-zoomed-note-id"}>{params.id}</Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Button
@@ -111,7 +112,7 @@ export default function ZoomedNote(params) {
         >
           Update note
         </Button>
-        <Button onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined">
+        <Button onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined" className={"t3sel-zoomed-note-delete-button"}>
           Delete note
         </Button>
       </Box>

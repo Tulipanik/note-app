@@ -78,12 +78,12 @@ export function Title() {
           <Divider />
           <List>
             <ListItem key={1} disablePadding>
-              <ListItemButton onClick={() => router.push("/notes")}>
+              <ListItemButton onClick={() => router.push("/notes")}  className={'t3sel-all-note-button'}>
                 <ListItemText primary={"Wyświetl wszystkie"} />
               </ListItemButton>
             </ListItem>
             <ListItem key={2} disablePadding>
-              <ListItemButton onClick={() => router.push("/findById")}>
+              <ListItemButton onClick={() => router.push("/findById")} className={'t3sel-note-search-button'}>
                 <ListItemText primary={"Wyszukaj po id"} />
               </ListItemButton>
             </ListItem>
