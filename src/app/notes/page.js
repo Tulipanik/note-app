@@ -3,7 +3,7 @@
 import { Box, Button } from "@mui/material";
 import Note from "@/Components/note";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 
 const drawerWidth = 240;
@@ -11,8 +11,7 @@ const drawerWidth = 240;
 export default function ViewGroupsNotes() {
   const [notesLocal, setNotes] = useState([]);
   const router = useRouter();
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  const urlParams = useSearchParams();
   const groups = urlParams.get("group") || undefined;
 
   useEffect(() => {
