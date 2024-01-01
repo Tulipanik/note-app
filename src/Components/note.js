@@ -16,6 +16,7 @@ export default function Note(params) {
           title={params.title}
           content={params.content}
           id={params.id}
+          userId={params.userId}
           setZoom={setZoom}
         />
       )}

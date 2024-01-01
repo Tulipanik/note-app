@@ -49,7 +49,12 @@ export default function FindByID() {
         />
       </form>
       <Box>
-        <Note title={note.title} content={note.content} id={note.id} />
+        <Note
+          title={note.title}
+          content={note.content}
+          id={note.id}
+          userId={note.userId}
+        />
       </Box>
     </Box>
   );

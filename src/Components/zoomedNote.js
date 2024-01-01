@@ -18,7 +18,7 @@ export default function ZoomedNote(params) {
         id: params.id,
         title: newTitle,
         content: newContent,
-        userId: group,
+        userId: params.userId,
       };
 
       await axios.put(`http://localhost:8080/notes/${params.id}`, updatedNote);
