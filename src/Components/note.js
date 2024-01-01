@@ -20,6 +20,7 @@ export default function Note(params) {
         />
       )}
       <Box
+        name={params.title}
         onClick={zoomSetter}
         sx={{
           backgroundColor: "yellow",

@@ -13,9 +13,12 @@ export default function ZoomedNote(params) {
 
   const updateNote = async () => {
     try {
+      if(newTitle===null || newContent===null|| group===null || newTitle==="" || newContent===""|| group===""){
+        throw new Error("Somedata are not filled");
+      }
+
       console.log(newContent);
       const updatedNote = {
-        id: params.id,
         title: newTitle,
         content: newContent,
         userId: group,
@@ -58,6 +61,7 @@ export default function ZoomedNote(params) {
       }}
     >
       <Box
+        name="ExitButton"
         sx={{
           position: "absolute",
           top: 60,
@@ -82,6 +86,7 @@ export default function ZoomedNote(params) {
         }}
       >
         <TextField
+          name="TitleField"
           label="Title"
           variant="standard"
           defaultValue={params.title}
@@ -90,6 +95,7 @@ export default function ZoomedNote(params) {
           onChange={(e) => setNewTitle(e.target.value)}
         />
         <TextField
+          name="ContentField"
           multiline
           rows={10}
           label="Content"
@@ -102,13 +108,14 @@ export default function ZoomedNote(params) {
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Button
+          name="UpdateButton"
           onClick={updateNote}
           sx={{ margin: "20px" }}
           variant="contained"
         >
           Update note
         </Button>
-        <Button onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined">
+        <Button name="DeleteButton" onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined">
           Delete note
         </Button>
       </Box>

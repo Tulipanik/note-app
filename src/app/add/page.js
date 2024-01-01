@@ -10,6 +10,7 @@ const drawerWidth = 240;
 export default function AddForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const group = urlParams.get("group") || "";
@@ -20,6 +21,7 @@ export default function AddForm() {
 
     try {
       if (title === "" || group === "") {
+        setErrorMsg("Title and group are required.");
         console.error("Title and group are required.");
         return;
       }
@@ -34,6 +36,7 @@ export default function AddForm() {
 
       router.push(group ? `/notes?group=${group}` : "/notes");
     } catch (error) {
+      setErrorMsg("Error adding note:"+ error);
       console.error("Error adding note:", error);
     }
   };
@@ -46,15 +49,20 @@ export default function AddForm() {
         ml: `${drawerWidth + 10}px`,
       }}
     >
+      <p name="ErrorMessage">
+        {errorMsg}
+      </p>
       <form onSubmit={add} sx={{ display: "flex", flexDirection: "column" }}>
         <FormLabel>Title</FormLabel>
         <Input
+          name="Title"
           sx={{ marginBottom: "20px", width: "100%" }}
           placeholder="Write here the note title"
           onChange={(e) => setTitle(e.target.value)}
         />
         <FormLabel>Note</FormLabel>
         <Input
+          name="Discription"
           multiline
           rows={4}
           sx={{ marginTop: "20px", width: "100%", height: "50px" }}
@@ -63,6 +71,7 @@ export default function AddForm() {
         />
         <div>
           <Input
+            name="Submit"
             type="Submit"
             sx={{ textAlign: "center", alignItems: "center" }}
           />
