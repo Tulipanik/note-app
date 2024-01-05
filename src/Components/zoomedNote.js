@@ -68,6 +68,7 @@ export default function ZoomedNote(params) {
           fontSize: "2rem",
         }}
         onClick={() => params.setZoom(false)}
+        className={"t3sel-zoomed-note-exit-button"}
       >
         <img src="/x-mark.png" style={{ width: "20px" }} />
       </Box>
@@ -88,6 +89,7 @@ export default function ZoomedNote(params) {
           InputProps={{ style: { fontWeight: "bold" } }}
           sx={{ marginTop: "10px" }}
           onChange={(e) => setNewTitle(e.target.value)}
+          className={"t3sel-zoomed-note-title-input"}
         />
         <TextField
           multiline
@@ -97,18 +99,20 @@ export default function ZoomedNote(params) {
           defaultValue={params.content}
           sx={{ marginTop: "20px" }}
           onChange={(e) => setNewContent(e.target.value)}
+          className={"t3sel-zoomed-note-content-input"}
         />
-        <Box>id: {params.id}</Box>
+        <Box className={"t3sel-zoomed-note-id"}>{params.id}</Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Button
           onClick={updateNote}
           sx={{ margin: "20px" }}
           variant="contained"
+          className={'t3sel-modify-note-submit'}
         >
           Update note
         </Button>
-        <Button onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined">
+        <Button onClick={deleteNote} sx={{ margin: "20px" }} variant="outlined" className={"t3sel-zoomed-note-delete-button"}>
           Delete note
         </Button>
       </Box>

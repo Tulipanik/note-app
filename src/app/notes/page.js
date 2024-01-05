@@ -50,6 +50,7 @@ export default function ViewGroupsNotes() {
         sx={{ display: groups === undefined ? "none" : "block" }}
         variant="contained"
         onClick={() => router.push(`/add?group=${groups}`)}
+        className="t3sel-main-page-add-note-button"
       >
         Dodaj notatkę +
       </Button>
