@@ -59,6 +59,7 @@ export default function AddForm() {
           sx={{ marginBottom: "20px", width: "100%" }}
           placeholder="Write here the note title"
           onChange={(e) => setTitle(e.target.value)}
+          className="t3sel-add-note-title-input"
         />
         <FormLabel>Note</FormLabel>
         <Input
@@ -68,12 +69,14 @@ export default function AddForm() {
           sx={{ marginTop: "20px", width: "100%", height: "50px" }}
           placeholder="Write here your note"
           onChange={(e) => setContent(e.target.value)}
+          className="t3sel-add-note-content-input"
         />
         <div>
           <Input
             name="Submit"
             type="Submit"
             sx={{ textAlign: "center", alignItems: "center" }}
+            className="t3sel-add-note-submit"
           />
         </div>
       </form>

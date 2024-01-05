@@ -78,12 +78,12 @@ export function Title() {
           <Divider />
           <List>
             <ListItem key={1} disablePadding>
-              <ListItemButton name="DisplayAll" onClick={() => router.push("/notes")}>
+              <ListItemButton onClick={() => router.push("/notes")}  className={'t3sel-all-note-button'}>
                 <ListItemText primary={"Wyświetl wszystkie"} />
               </ListItemButton>
             </ListItem>
             <ListItem key={2} disablePadding>
-              <ListItemButton name="FindById" onClick={() => router.push("/findById")}>
+              <ListItemButton onClick={() => router.push("/findById")} className={'t3sel-note-search-button'}>
                 <ListItemText primary={"Wyszukaj po id"} />
               </ListItemButton>
             </ListItem>
@@ -95,6 +95,7 @@ export function Title() {
                     onClick={() => {
                       router.push(`/notes?group=${text}`);
                     }}
+                    className="t3sel-main-page-set-group-button"
                   >
                     <ListItemText primary={text} />
                   </ListItemButton>
@@ -105,6 +106,7 @@ export function Title() {
               <form
                 onSubmit={() => {
                   setGroups([...groups, newGroup]);
+                  router.push(`/notes?group=${newGroup}`)
                 }}
               >
                 <Input
@@ -112,6 +114,7 @@ export function Title() {
                     setNewGroup(value.target.value);
                   }}
                   placeholder="Add group"
+                  className="t3sel-main-page-add-group-button"
                 />
                 <Input sx={{ display: "none" }} type="submit" />
               </form>
