@@ -54,7 +54,7 @@ export default function ViewGroupsNotes() {
       >
         Dodaj notatkę +
       </Button>
-      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+      <Box name="NoteBox" sx={{ display: "flex", flexWrap: "wrap" }}>
         {notesLocal.map((note, key) => (
           <Note
             key={key}

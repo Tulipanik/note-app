@@ -1,0 +1,15 @@
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.AssemblyInfoInputs.cache
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.AssemblyInfo.cs
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.csproj.CoreCompileInputs.cache
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.sourcelink.json
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\bin\Debug\net6.0\ReportsCollector.exe
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\bin\Debug\net6.0\ReportsCollector.deps.json
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\bin\Debug\net6.0\ReportsCollector.runtimeconfig.json
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\bin\Debug\net6.0\ReportsCollector.dll
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\bin\Debug\net6.0\ReportsCollector.pdb
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.dll
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\refint\ReportsCollector.dll
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.pdb
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ReportsCollector.genruntimeconfig.cache
+C:\Users\RetailAdmin\Desktop\Testowanie oprogramowania\note-app\Selenium\ReportsCollector\obj\Debug\net6.0\ref\ReportsCollector.dll

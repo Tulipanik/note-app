@@ -39,6 +39,7 @@ export default function FindByID() {
       <form onSubmit={findNote} sx={{ display: "flex", flexDirection: "row" }}>
         <FormLabel>Title</FormLabel>
         <Input
+          name="search"
           sx={{ marginBottom: "20px", width: "100%" }}
           placeholder="Write here the note title"
           onChange={(e) => setNoteId(e.target.value)}
@@ -46,11 +47,12 @@ export default function FindByID() {
         />
         <Input
           type="Submit"
+          name="submit"
           sx={{ textAlign: "center", alignItems: "center", width: "100px" }}
           className={'t3sel-search-note-find-button'}
         />
       </form>
-      <Box>
+      <Box name="NoteBox">
         <Note
           title={note.title}
           content={note.content}
