@@ -154,13 +154,13 @@ namespace TestSelenium
         {
             client = new HttpClient();
             var options = new FirefoxOptions();
-            //options.AddArguments("--headless");
+            options.AddArguments("--headless");
             options.SetLoggingPreference(LogType.Browser, LogLevel.All);
             driver = new FirefoxDriver(options);
 
             //Setup driver
-            driver.Manage().Timeouts().PageLoad = System.TimeSpan.FromSeconds(5);
-            driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().PageLoad = System.TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
         }
 
         [AfterFeature]
@@ -172,9 +172,6 @@ namespace TestSelenium
         [BeforeTestRun]
         public static void AddRaport()
         {
-            /*ExtentHtmlReporter reporter = new ExtentHtmlReporter(RaportPath);
-            extent = new AventStack.ExtentReports.ExtentReports();
-            extent.AttachReporter(reporter);*/
 
             Reports.getExtent();
         }
@@ -213,7 +210,6 @@ namespace TestSelenium
         [AfterFeature]
         public static void AfterFeature()
         {
-            //extent.Flush();
             Reports.close();
         }
     }

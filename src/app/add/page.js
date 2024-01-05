@@ -25,7 +25,7 @@ export default function AddForm() {
         console.error("Title and group are required.");
         return;
       }
-
+      console.log(group);
       const addedObject = {
         title: title,
         content: content,

@@ -78,7 +78,7 @@ export function Title() {
           <Divider />
           <List>
             <ListItem key={1} disablePadding>
-              <ListItemButton onClick={() => router.push("/notes")}  className={'t3sel-all-note-button'}>
+              <ListItemButton name="DisplayAll" onClick={() => router.push("/notes")}  className={'t3sel-all-note-button'}>
                 <ListItemText primary={"Wyświetl wszystkie"} />
               </ListItemButton>
             </ListItem>

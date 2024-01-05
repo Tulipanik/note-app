@@ -142,8 +142,8 @@ namespace TestSelenium
             driver = new FirefoxDriver(options);
 
             //Setup driver
-            driver.Manage().Timeouts().PageLoad = System.TimeSpan.FromSeconds(5);
-            driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().PageLoad = System.TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
         }
 
         [AfterFeature]

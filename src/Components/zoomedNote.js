@@ -7,16 +7,16 @@ const drawerWidth = 240;
 export default function ZoomedNote(params) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const group = urlParams.get("group") || "";
   const [newTitle, setNewTitle] = useState(params.title);
   const [newContent, setNewContent] = useState(params.content);
 
   const updateNote = async () => {
     try {
-      if(newTitle===null || newContent===null|| group===null || newTitle==="" || newContent===""|| group===""){
+      if(newTitle===null || newContent===null|| params.userId===null || newTitle==="" || newContent===""|| params.userId===""){
         throw new Error("Somedata are not filled");
       }
-
+      console.log(params.userId);
+      console.log(newTitle);
       console.log(newContent);
       const updatedNote = {
         title: newTitle,
